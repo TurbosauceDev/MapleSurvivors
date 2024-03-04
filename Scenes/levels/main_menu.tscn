@@ -107,8 +107,8 @@ text = "Quit Game"
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("4_78y8u")
-volume_db = -12.0
 autoplay = true
 mix_target = 2
 bus = &"Music"

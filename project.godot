@@ -53,6 +53,7 @@ folder_colors={
 "res://Assets/visuals/sprites/": "pink",
 "res://Assets/visuals/tiles/": "pink",
 "res://Data/": "gray",
+"res://Data/resources/": "yellow",
 "res://Data/savedata/": "yellow",
 "res://Data/scripts/": "yellow",
 "res://GUI/": "gray",

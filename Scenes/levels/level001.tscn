@@ -19,8 +19,9 @@ spawn_delay_counter = 0
 [node name="Level001" type="Node2D"]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("1_d7rka")
-volume_db = -24.0
+volume_db = -9.0
 autoplay = true
 bus = &"Music"
 
