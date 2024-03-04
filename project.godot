@@ -35,11 +35,6 @@ window/size/extend_to_title=true
 window/stretch/mode="viewport"
 mouse_cursor/custom_image="res://GUI/gui_assets/maplehand.png"
 
-[editor]
-
-version_control/plugin_name="GitPlugin"
-version_control/autoload_on_startup=true
-
 [file_customization]
 
 folder_colors={
