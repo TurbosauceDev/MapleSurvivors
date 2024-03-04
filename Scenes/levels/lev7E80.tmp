@@ -13,7 +13,7 @@ time_start = 0
 time_end = 60
 enemy = ExtResource("4_72d4b")
 enemy_num = 10
-enemy_spawn_delay = 0
+enemy_spawn_delay = 2
 spawn_delay_counter = 0
 
 [node name="Level001" type="Node2D"]

@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://gb777hao5hke" path="res://Scenes/utility/hit_box.tscn" id="4_kc5l1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0rj8m"]
-radius = 20.0998
 
 [sub_resource type="Animation" id="Animation_t2boe"]
 length = 0.001
@@ -102,9 +101,9 @@ radius = 35.0571
 radius = 21.0
 height = 96.0
 
-[node name="slime_green" type="CharacterBody2D"]
+[node name="slime_green" type="CharacterBody2D" groups=["enemy", "mob"]]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 22
 motion_mode = 1
 script = ExtResource("1_4s5gh")
 movement_speed = 69.0
@@ -114,7 +113,7 @@ texture = ExtResource("1_oatqv")
 hframes = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-9, 21)
+position = Vector2(-6, 27)
 shape = SubResource("CircleShape2D_0rj8m")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
