@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dv1k08l4k46an"]
+
+[ext_resource type="Script" path="res://Modules/inventory_module/inventory_scripts/item_data.gd" id="1_awrko"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uipao"]
+load_path = "res://.godot/imported/itematlas_001.png-8d0fdf5c5969a954259660e78e9fb06c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe6du"]
+resource_local_to_scene = true
+atlas = SubResource("CompressedTexture2D_uipao")
+region = Rect2(40, 40, 40, 40)
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_awrko")
+name = "Red Potion"
+description = "I really hope this is made with berries.
+
+[Recovers +50 HP]"
+stackable = true
+texture = SubResource("AtlasTexture_qe6du")

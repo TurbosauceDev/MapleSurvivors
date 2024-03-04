@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://6g1a5opg22hc"]
+
+[ext_resource type="Script" path="res://Modules/player/player_scripts/BasicPlayerScript.gd" id="1_wwva8"]
+[ext_resource type="Texture2D" uid="uid://castwwujrssm0" path="res://Assets/visuals/icons/myson.png" id="2_e12yf"]
+[ext_resource type="Script" path="res://Modules/player/player_scripts/player_controller.gd" id="3_b1xvh"]
+[ext_resource type="AudioStream" uid="uid://ctoxm528esap8" path="res://Assets/audio/music/jumpsoundiguess.mp3" id="3_dx2tj"]
+[ext_resource type="PackedScene" uid="uid://cddvb13bc0kkc" path="res://GUI/gui_scenes/menu_controller.tscn" id="3_nain0"]
+[ext_resource type="Resource" uid="uid://b6xmfartnn0y3" path="res://Data/savedata/test_inventory.tres" id="4_ychvi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vp7j1"]
+
+[node name="PlayerCharacter" type="Node2D"]
+
+[node name="player" type="CharacterBody2D" parent="."]
+position = Vector2(640, 532)
+script = ExtResource("1_wwva8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+shape = SubResource("RectangleShape2D_vp7j1")
+
+[node name="player_sprite" type="Sprite2D" parent="player"]
+scale = Vector2(0.069, 0.069)
+texture = ExtResource("2_e12yf")
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(0, -172)
+process_callback = 0
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="player"]
+position = Vector2(0, -172)
+remote_path = NodePath("../Camera2D")
+
+[node name="GUIController" type="Control" parent="."]
+process_mode = 3
+process_priority = -1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("3_b1xvh")
+inventory_data = ExtResource("4_ychvi")
+
+[node name="MenuController" parent="GUIController" instance=ExtResource("3_nain0")]
+
+[node name="PlayerAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dx2tj")
+volume_db = -9.0
+bus = &"Sound Effects"

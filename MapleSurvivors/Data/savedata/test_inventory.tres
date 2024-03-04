@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="InventoryData" load_steps=13 format=3 uid="uid://b6xmfartnn0y3"]
+
+[ext_resource type="Script" path="res://Modules/inventory_module/inventory_scripts/inventory_data.gd" id="1_rgf6d"]
+[ext_resource type="Resource" uid="uid://d0y0nfbcecvr5" path="res://Modules/items/consumable_items/blue_potion.tres" id="2_3et2j"]
+[ext_resource type="Script" path="res://Modules/inventory_module/inventory_scripts/slot_data.gd" id="3_8cy81"]
+[ext_resource type="Resource" uid="uid://dv1k08l4k46an" path="res://Modules/items/consumable_items/red_potion.tres" id="4_7cjqr"]
+[ext_resource type="Resource" uid="uid://bqupkx62qrabg" path="res://Modules/items/consumable_items/onyx_apple.tres" id="5_5md8t"]
+[ext_resource type="Resource" uid="uid://b7dbykqjp57ju" path="res://Modules/items/consumable_items/haste_pill.tres" id="6_q5frk"]
+[ext_resource type="Resource" uid="uid://d4hteuhghsrs1" path="res://Modules/items/consumable_items/magic_pill.tres" id="7_ytygg"]
+
+[sub_resource type="Resource" id="Resource_vq2nq"]
+script = ExtResource("3_8cy81")
+item_data = ExtResource("2_3et2j")
+quantity = 20
+
+[sub_resource type="Resource" id="Resource_4oa36"]
+script = ExtResource("3_8cy81")
+item_data = ExtResource("4_7cjqr")
+quantity = 20
+
+[sub_resource type="Resource" id="Resource_71kt6"]
+script = ExtResource("3_8cy81")
+item_data = ExtResource("5_5md8t")
+quantity = 69
+
+[sub_resource type="Resource" id="Resource_jpqj1"]
+script = ExtResource("3_8cy81")
+item_data = ExtResource("6_q5frk")
+quantity = 2
+
+[sub_resource type="Resource" id="Resource_nx3aq"]
+script = ExtResource("3_8cy81")
+item_data = ExtResource("7_ytygg")
+quantity = 5
+
+[resource]
+script = ExtResource("1_rgf6d")
+slot_datas = Array[ExtResource("3_8cy81")]([SubResource("Resource_vq2nq"), SubResource("Resource_4oa36"), SubResource("Resource_71kt6"), SubResource("Resource_jpqj1"), SubResource("Resource_nx3aq"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])

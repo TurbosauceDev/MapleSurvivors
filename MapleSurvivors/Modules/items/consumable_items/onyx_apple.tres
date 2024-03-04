@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://bqupkx62qrabg"]
+
+[ext_resource type="Script" path="res://Modules/inventory_module/inventory_scripts/item_data.gd" id="1_pw5x2"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q0ktr"]
+load_path = "res://.godot/imported/itematlas_001.png-8d0fdf5c5969a954259660e78e9fb06c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gawbw"]
+resource_local_to_scene = true
+resource_name = "Consumable Atlas"
+atlas = SubResource("CompressedTexture2D_q0ktr")
+region = Rect2(640, 120, 40, 40)
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_pw5x2")
+name = "Onyx Apple"
+description = "A rare, ripe apple imbued with power.
+ You were never good enough to get these as a kid, be honest.
+
+[Increases Weapon and Magic Attack by +100, and Defense by +25 for 20 Minutes.]"
+stackable = true
+texture = SubResource("AtlasTexture_gawbw")

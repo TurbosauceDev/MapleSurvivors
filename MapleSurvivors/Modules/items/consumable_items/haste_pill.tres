@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://b7dbykqjp57ju"]
+
+[ext_resource type="Script" path="res://Modules/inventory_module/inventory_scripts/item_data.gd" id="1_8ef2b"]
+[ext_resource type="Texture2D" uid="uid://dtqxgtm7ocafd" path="res://Assets/visuals/atlas/itematlas_001.png" id="2_5hjtc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6e3g"]
+resource_local_to_scene = true
+atlas = ExtResource("2_5hjtc")
+region = Rect2(40, 40, 800, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a54bi"]
+resource_local_to_scene = true
+atlas = SubResource("AtlasTexture_o6e3g")
+region = Rect2(480, 0, 40, 40)
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_8ef2b")
+name = "Haste Pill"
+description = "This is legal, right?
+
+[Increases Speed by 20% for 10 minutes]"
+stackable = true
+texture = SubResource("AtlasTexture_a54bi")

@@ -1,0 +1,10 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://b3163eqsr1lh7"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2uhai"]
+load_path = "res://.godot/imported/itematlas_001.png-8d0fdf5c5969a954259660e78e9fb06c.ctex"
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Consumable Atlas"
+atlas = SubResource("CompressedTexture2D_2uhai")
+region = Rect2(680, 320, 40, 40)

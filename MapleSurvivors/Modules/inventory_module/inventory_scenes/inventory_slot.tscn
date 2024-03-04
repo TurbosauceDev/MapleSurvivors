@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://pkdkrqjyh2j6"]
+
+[ext_resource type="Script" path="res://Modules/inventory_module/inventory_scripts/inventory_slot.gd" id="1_cgjn2"]
+[ext_resource type="Theme" uid="uid://dygx7jsqh014s" path="res://GUI/gui_assets/TestTheme.tres" id="2_yx127"]
+
+[node name="Slot" type="PanelContainer"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_cgjn2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="QuantityLabel" type="Label" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme = ExtResource("2_yx127")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 2
+text = "x200"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

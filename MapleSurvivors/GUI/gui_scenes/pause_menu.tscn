@@ -1,0 +1,96 @@
+[gd_scene load_steps=3 format=3 uid="uid://sdjvoiduh272"]
+
+[ext_resource type="Script" path="res://GUI/gui_scripts/pause_menu.gd" id="1_xptfq"]
+[ext_resource type="Theme" uid="uid://dygx7jsqh014s" path="res://GUI/gui_assets/TestTheme.tres" id="2_iw0ww"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+script = ExtResource("1_xptfq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 69.0
+offset_top = 69.0
+offset_right = 309.0
+offset_bottom = 720.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PAUSED" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="paused" type="Label" parent="MarginContainer/VBoxContainer/PAUSED"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_iw0ww")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 8
+theme_override_font_sizes/font_size = 72
+text = "paused"
+uppercase = true
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(169, 169)
+layout_mode = 2
+
+[node name="PauseOptions" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/PauseOptions"]
+show_behind_parent = true
+custom_minimum_size = Vector2(182, 142)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PauseOptions"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Resume" type="Button" parent="MarginContainer/VBoxContainer/PauseOptions/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_iw0ww")
+theme_override_constants/outline_size = 4
+theme_override_constants/h_separation = 0
+theme_override_font_sizes/font_size = 16
+text = "Resume"
+
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer/PauseOptions/VBoxContainer2"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("2_iw0ww")
+theme_override_constants/outline_size = 4
+theme_override_constants/h_separation = 0
+theme_override_font_sizes/font_size = 16
+text = "Options"
+
+[node name="MainMenu" type="Button" parent="MarginContainer/VBoxContainer/PauseOptions/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_iw0ww")
+theme_override_constants/outline_size = 4
+theme_override_constants/h_separation = 0
+theme_override_font_sizes/font_size = 16
+text = "Main Menu"
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/PauseOptions/VBoxContainer2"]
+custom_minimum_size = Vector2(169, 7)
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/PauseOptions/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_iw0ww")
+theme_override_constants/outline_size = 4
+theme_override_constants/h_separation = 0
+theme_override_font_sizes/font_size = 16
+text = "Quit Game"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PauseOptions/VBoxContainer2/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PauseOptions/VBoxContainer2/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PauseOptions/VBoxContainer2/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PauseOptions/VBoxContainer2/Quit" to="." method="_on_quit_pressed"]
