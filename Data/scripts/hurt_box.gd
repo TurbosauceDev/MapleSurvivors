@@ -6,7 +6,7 @@ extends Area2D
 @onready var collision = $collision
 @onready var disableTimer = $disableTimer
 
-signal hurt(damage)
+signal hurt(damage, angle, knockback)
 #endregion
 
 #region --- Take Damage ---
@@ -27,7 +27,20 @@ func _on_area_entered(area):
 						area.tempdisable() #temp disable hitbox from hitbox.gd
 			
 			var damage = area.damage
-			emit_signal("hurt" , damage) 
+			
+			var angle : Vector2 = Vector2.ZERO
+			var knockback = area.knockback_amount
+			if not area.get("angle") == null:
+				angle = area.angle 
+			#if area.get("knockback") == 1:
+				#knockback = area.knockback_amount
+			
+			emit_signal("hurt" , damage, angle, knockback) 
+			print(knockback, " , " , angle)
+			
+			if area.has_method("enemy_hit"):
+				area.enemy_hit(1)
+				
 	#emit hurt signal with damage amount found in hitbox (used within beginner.gd and enemy.gd)
 #endregion
 

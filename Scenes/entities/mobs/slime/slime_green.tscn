@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://17b2f352krkj"]
+[gd_scene load_steps=13 format=3 uid="uid://17b2f352krkj"]
 
 [ext_resource type="Script" path="res://Data/scripts/enemy.gd" id="1_4s5gh"]
 [ext_resource type="Texture2D" uid="uid://dxgxxamr1fss4" path="res://Scenes/entities/mobs/slime/move_sheet.png" id="1_oatqv"]
 [ext_resource type="PackedScene" uid="uid://kb7a4xc26bly" path="res://Scenes/utility/hurt_box.tscn" id="3_atge2"]
+[ext_resource type="Texture2D" uid="uid://co3tdk1neg62p" path="res://Scenes/entities/mobs/slime/slime_die_sheet.png" id="3_ok7br"]
 [ext_resource type="PackedScene" uid="uid://gb777hao5hke" path="res://Scenes/utility/hit_box.tscn" id="4_kc5l1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0rj8m"]
@@ -88,9 +89,64 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
+[sub_resource type="Animation" id="Animation_tjvcn"]
+resource_name = "death"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ok7br")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7bomx"]
 _data = {
 "RESET": SubResource("Animation_t2boe"),
+"death": SubResource("Animation_tjvcn"),
 "walk": SubResource("Animation_iwlc4")
 }
 
@@ -103,7 +159,7 @@ height = 96.0
 
 [node name="slime_green" type="CharacterBody2D" groups=["enemy", "mob"]]
 collision_layer = 4
-collision_mask = 22
+collision_mask = 18
 motion_mode = 1
 script = ExtResource("1_4s5gh")
 movement_speed = 69.0
@@ -116,7 +172,7 @@ hframes = 7
 position = Vector2(-6, 27)
 shape = SubResource("CircleShape2D_0rj8m")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="slime_anim" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_7bomx")
 }
@@ -126,6 +182,7 @@ autoplay = "walk"
 collision_mask = 4
 
 [node name="collision" parent="hurt_box" index="0"]
+visible = false
 position = Vector2(-5, 14)
 shape = SubResource("CircleShape2D_2nah0")
 
@@ -133,6 +190,7 @@ shape = SubResource("CircleShape2D_2nah0")
 collision_layer = 2
 
 [node name="CollisionShape2D" parent="hit_box" index="0"]
+visible = false
 position = Vector2(-1, 21)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_7bd73")

@@ -86,13 +86,13 @@ func animate():
 #endregion
 
 #region --- Take Damage --- 
-func _on_hurt_box_hurt(damage):
+func _on_hurt_box_hurt(damage, _angle, _knockback_amount):
+	
 	current_hp -= damage
 	var playerStats : Array = [current_hp , current_mp]
 	print("HP: ", playerStats[0], " , ", "MP: ", playerStats[1])
 	#print(current_hp)
 #endregion
-
 
 func _on_magic_bolt_timer_timeout():
 	MagicBolt_ammo += MagicBolt_base_ammo
@@ -106,7 +106,7 @@ func _on_magic_bolt_attack_timer_timeout():
 		MagicBolt_attack.level = MagicBolt_level
 		add_child(MagicBolt_attack)
 		MagicBolt_ammo -= 1
-		print("Bolt Ammo - 1")
+		#print(enemy_close)
 		if MagicBolt_ammo > 0:
 			MagicBolt_attacktimer.start()
 		else:
@@ -115,19 +115,24 @@ func _on_magic_bolt_attack_timer_timeout():
 func get_random_target():
 	if enemy_close.size() > 0:
 		return enemy_close.pick_random().global_position
-		print("Enemy Picked")
 	else:
 		return Vector2.UP
-		print("Enemy Missed")
-
 
 func _on_enemy_detection_body_entered(body):
 	if not enemy_close.has(body):
 		enemy_close.append(body)
-		print("Slime Spotted!")
-
+		#print("Slime Spotted!")
 
 func _on_enemy_detection_body_exited(body):
 	if enemy_close.has(body):
 		enemy_close.erase(body)
-		print("Slime Slimed!")
+		#print("Slime Slimed!")
+
+func _on_grab_area_area_entered(area):
+	if area.is_in_group("loot"):
+		area.target = self
+
+func _on_collect_area_area_entered(area):
+	if area.is_in_group("loot"):
+		var meso_amount = area.collect()
+		

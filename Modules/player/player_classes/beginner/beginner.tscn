@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://byx8r2wrwjnj"]
+[gd_scene load_steps=24 format=3 uid="uid://byx8r2wrwjnj"]
 
 [ext_resource type="Script" path="res://Modules/player/player_classes/beginner/beginner.gd" id="1_7r6he"]
 [ext_resource type="Texture2D" uid="uid://bxim5pgsgtifw" path="res://Modules/player/player_sheets/jump_sheet001.png" id="2_fjr1t"]
@@ -273,30 +273,22 @@ size = Vector2(122, 166)
 [sub_resource type="CircleShape2D" id="CircleShape2D_665w0"]
 radius = 803.508
 
-[node name="Beginner" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_w1xqx"]
+radius = 624.157
 
-[node name="Beginner" type="CharacterBody2D" parent="." groups=["player"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_agx64"]
+radius = 46.0
+
+[node name="Beginner" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_7r6he")
-MagicBolt_base_ammo = 100
-MagicBolt_attack_speed = 0.3
+MagicBolt_ammo = 0
+MagicBolt_base_ammo = 24
+MagicBolt_attack_speed = 1.0
 
-[node name="PlayerAnim" type="AnimationPlayer" parent="Beginner"]
-libraries = {
-"": SubResource("AnimationLibrary_36rej")
-}
-
-[node name="player_sprite" type="Sprite2D" parent="Beginner"]
-texture = ExtResource("2_iox0x")
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Beginner"]
-position = Vector2(-3, 2.5)
-shape = SubResource("RectangleShape2D_frqxr")
-
-[node name="GUIController" type="Control" parent="Beginner"]
+[node name="GUIController" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -304,51 +296,80 @@ offset_bottom = 40.0
 script = ExtResource("8_xinct")
 inventory_data = ExtResource("2_kq088")
 
-[node name="MenuController" parent="Beginner/GUIController" instance=ExtResource("8_wwvuh")]
+[node name="MenuController" parent="GUIController" instance=ExtResource("8_wwvuh")]
 
-[node name="Camera2D" type="Camera2D" parent="Beginner"]
+[node name="PlayerAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_36rej")
+}
+
+[node name="player_sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_iox0x")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 2.5)
+shape = SubResource("RectangleShape2D_frqxr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(2, 2)
 process_callback = 0
 
-[node name="hurt_box" parent="Beginner" instance=ExtResource("10_yqwus")]
+[node name="hurt_box" parent="." instance=ExtResource("10_yqwus")]
 collision_mask = 2
 HurtBoxType = 2
 
-[node name="collision" parent="Beginner/hurt_box" index="0"]
+[node name="collision" parent="hurt_box" index="0"]
 position = Vector2(-3, 3)
 shape = SubResource("RectangleShape2D_p36e3")
 
-[node name="EnemyDetection" type="Area2D" parent="Beginner"]
+[node name="EnemyDetection" type="Area2D" parent="."]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 4
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Beginner/EnemyDetection"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetection"]
 shape = SubResource("CircleShape2D_665w0")
 debug_color = Color(0.878431, 0.886275, 0.960784, 0)
 
-[node name="Attack" type="Node2D" parent="Beginner"]
+[node name="Attack" type="Node2D" parent="."]
 scale = Vector2(2, 2)
 
-[node name="MagicBoltTimer" type="Timer" parent="Beginner/Attack"]
+[node name="MagicBoltTimer" type="Timer" parent="Attack"]
 unique_name_in_owner = true
 process_callback = 0
 wait_time = 1.5
 
-[node name="MagicBoltAttackTimer" type="Timer" parent="Beginner/Attack/MagicBoltTimer"]
+[node name="MagicBoltAttackTimer" type="Timer" parent="Attack/MagicBoltTimer"]
 unique_name_in_owner = true
 process_callback = 0
 wait_time = 0.075
 
 [node name="PlayerAudio" type="AudioStreamPlayer2D" parent="."]
-scale = Vector2(0.5, 0.5)
 stream = ExtResource("3_6y4dd")
 
-[connection signal="hurt" from="Beginner/hurt_box" to="Beginner" method="_on_hurt_box_hurt"]
-[connection signal="body_entered" from="Beginner/EnemyDetection" to="Beginner" method="_on_enemy_detection_body_entered"]
-[connection signal="body_exited" from="Beginner/EnemyDetection" to="Beginner" method="_on_enemy_detection_body_exited"]
-[connection signal="timeout" from="Beginner/Attack/MagicBoltTimer" to="Beginner" method="_on_magic_bolt_timer_timeout"]
-[connection signal="timeout" from="Beginner/Attack/MagicBoltTimer/MagicBoltAttackTimer" to="Beginner" method="_on_magic_bolt_attack_timer_timeout"]
+[node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
 
-[editable path="Beginner/hurt_box"]
+[node name="Grab_col" type="CollisionShape2D" parent="GrabArea"]
+shape = SubResource("CircleShape2D_w1xqx")
+debug_color = Color(0.709804, 0.843137, 0, 0.141176)
+
+[node name="CollectArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="Collect_col" type="CollisionShape2D" parent="CollectArea"]
+shape = SubResource("CircleShape2D_agx64")
+
+[connection signal="hurt" from="hurt_box" to="." method="_on_hurt_box_hurt"]
+[connection signal="body_entered" from="EnemyDetection" to="." method="_on_enemy_detection_body_entered"]
+[connection signal="body_exited" from="EnemyDetection" to="." method="_on_enemy_detection_body_exited"]
+[connection signal="timeout" from="Attack/MagicBoltTimer" to="." method="_on_magic_bolt_timer_timeout"]
+[connection signal="timeout" from="Attack/MagicBoltTimer/MagicBoltAttackTimer" to="." method="_on_magic_bolt_attack_timer_timeout"]
+[connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
+[connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
+
+[editable path="hurt_box"]

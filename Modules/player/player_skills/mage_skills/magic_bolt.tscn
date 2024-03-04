@@ -173,7 +173,7 @@ _data = {
 
 [node name="MagicBolt" type="Area2D" groups=["attack"]]
 top_level = true
-collision_layer = 16
+collision_layer = 20
 collision_mask = 4
 script = ExtResource("1_b4vsn")
 
@@ -188,6 +188,7 @@ shape = SubResource("CircleShape2D_w08no")
 libraries = {
 "": SubResource("AnimationLibrary_dbvrd")
 }
+autoplay = "ball"
 
 [node name="MagicBolt_timer" type="Timer" parent="."]
 wait_time = 5.0

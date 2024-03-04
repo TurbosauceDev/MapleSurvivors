@@ -2,6 +2,7 @@ extends Area2D
 
 #region --- Variables ---
 @export var damage = 1
+@export var knockback_amount = 10
 @onready var collision = $CollisionShape2D
 @onready var disableTimer = $disableHitboxTimer
 #endregion
