@@ -1,5 +1,5 @@
 extends Node2D
-@export var Level : PackedScene = preload("res://Scenes/Levels/levels/level001.tscn")
+#@export var Level : PackedScene = preload("res://Scenes/Levels/levels/level001.tscn")
 #@export var ChooseLevel = preload(Level)
 @onready var options_menu = $OptionsMenu
 @onready var audio = $AudioStreamPlayer
