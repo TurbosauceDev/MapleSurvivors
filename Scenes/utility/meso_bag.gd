@@ -26,5 +26,6 @@ func _physics_process(delta):
 func collect():
 	meso_col.call_deferred("set" , "disabled" , true)
 	meso_sprite.visible = false
+	
 	return meso
 

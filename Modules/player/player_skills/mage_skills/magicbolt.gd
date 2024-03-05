@@ -17,10 +17,10 @@ func _ready():
 	rotation = angle.angle() + deg_to_rad(135)
 	match level:
 		1:
-			hp = 2
-			speed = 250
+			hp = 1
+			speed = 300
 			damage = 10
-			knockback_amount = 1000
+			knockback_amount = 100
 			aoe_size = 1 
 
 func _physics_process(delta):
