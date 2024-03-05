@@ -1,7 +1,8 @@
 [gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cr0a30uhh4457"]
 
-[ext_resource type="Texture2D" uid="uid://b7qrgh7hrc250" path="res://Assets/visuals/sprites/meso_sheet.png" id="1_q38s7"]
+[ext_resource type="Texture2D" uid="uid://drek0svhp5tyb" path="res://Assets/visuals/sprites/meso_bag.png" id="1_a5p8q"]
 
 [resource]
-atlas = ExtResource("1_q38s7")
-region = Rect2(0, 64, 128, 32)
+resource_local_to_scene = true
+atlas = ExtResource("1_a5p8q")
+region = Rect2(0, 32, 128, 32)

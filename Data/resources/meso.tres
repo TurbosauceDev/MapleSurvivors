@@ -4,10 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://b7qrgh7hrc250" path="res://Assets/visuals/sprites/meso_sheet.png" id="2_deu6i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xyk3y"]
+resource_local_to_scene = true
 atlas = ExtResource("2_deu6i")
 region = Rect2(0, 64, 32, 32)
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_4dprt")
 name = "Meso"
 description = "mesos pl0x"

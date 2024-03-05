@@ -1,15 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://0ccf6qfstmom"]
+[gd_scene load_steps=14 format=3 uid="uid://0ccf6qfstmom"]
 
 [ext_resource type="Script" path="res://Scenes/utility/meso_bag.gd" id="1_3hprk"]
 [ext_resource type="Texture2D" uid="uid://cr0a30uhh4457" path="res://Assets/visuals/sprites/meso_atlas.tres" id="1_c1we6"]
+[ext_resource type="Texture2D" uid="uid://drek0svhp5tyb" path="res://Assets/visuals/sprites/meso_bag.png" id="3_2gr20"]
+[ext_resource type="Texture2D" uid="uid://c0ey3f5g05g2k" path="res://Assets/visuals/sprites/meso_stack.png" id="4_c6vk1"]
+[ext_resource type="Texture2D" uid="uid://b8pwvsq0lokob" path="res://Assets/visuals/sprites/meso_coin_copper.png" id="5_m5an8"]
+[ext_resource type="Texture2D" uid="uid://c6qyeb5xyc65a" path="res://Assets/visuals/sprites/meso_coin_gold.png" id="6_oxti1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4cluv"]
 size = Vector2(38, 34)
 
 [sub_resource type="Animation" id="Animation_m3df2"]
 resource_name = "meso_bag"
-length = 0.8
 loop_mode = 1
+step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -17,46 +21,34 @@ tracks/0/path = NodePath("meso_sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("1_c1we6")]
+"values": [ExtResource("3_2gr20"), ExtResource("3_2gr20")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("meso_sprite:texture:region")
+tracks/1/path = NodePath("meso_sprite:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(0, 64, 128, 32)]
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("meso_sprite:hframes")
+tracks/2/path = NodePath("meso_sprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [4]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("meso_sprite:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.75),
-"transitions": PackedFloat32Array(0.189465, 0.25, 2),
-"update": 1,
-"values": [3, 2, 3]
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_7rpnq"]
@@ -124,7 +116,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_c1we6")]
+"values": [ExtResource("4_c6vk1")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -177,39 +169,27 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_c1we6")]
+"values": [ExtResource("5_m5an8")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("meso_sprite:texture:region")
+tracks/1/path = NodePath("meso_sprite:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(0, 0, 128, 32)]
+"update": 1,
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("meso_sprite:hframes")
+tracks/2/path = NodePath("meso_sprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("meso_sprite:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0.1, 0.35, 0.6, 0.85),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
@@ -230,39 +210,27 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_c1we6")]
+"values": [ExtResource("6_oxti1")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("meso_sprite:texture:region")
+tracks/1/path = NodePath("meso_sprite:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(0, 32, 128, 32)]
+"update": 1,
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("meso_sprite:hframes")
+tracks/2/path = NodePath("meso_sprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("meso_sprite:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0.1, 0.35, 0.6, 0.85),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
@@ -279,7 +247,6 @@ _data = {
 }
 
 [node name="MesoBag" type="Area2D" groups=["loot"]]
-position = Vector2(234, 162)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_3hprk")
