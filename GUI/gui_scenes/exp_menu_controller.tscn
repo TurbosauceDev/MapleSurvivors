@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cad6d681d0wbi"]
+
+[ext_resource type="Texture2D" uid="uid://dlhutgjdehxmg" path="res://GUI/bars/bar_XP_2.png" id="1_6pt4x"]
+[ext_resource type="Texture2D" uid="uid://cpw2ehucsio7h" path="res://GUI/bars/bar_blank.png" id="1_o6orf"]
+[ext_resource type="Theme" uid="uid://dygx7jsqh014s" path="res://GUI/gui_assets/TestTheme.tres" id="3_g2r5o"]
+[ext_resource type="Texture2D" uid="uid://cp32n0iyyh6vd" path="res://GUI/bars/bar_2XP_1.png" id="3_tbowj"]
+
+[node name="EXPMenuController" type="CanvasLayer"]
+offset = Vector2(32, 32)
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 32, 32)
+
+[node name="xp_container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="xp_bar" type="TextureProgressBar" parent="xp_container"]
+layout_mode = 0
+offset_right = 119.0
+offset_bottom = 42.0
+value = 72.0
+texture_under = ExtResource("1_o6orf")
+texture_over = ExtResource("1_6pt4x")
+texture_progress = ExtResource("3_tbowj")
+
+[node name="level_label" type="Label" parent="xp_container/xp_bar"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 16.0
+offset_right = 75.0
+offset_bottom = 44.0
+theme = ExtResource("3_g2r5o")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/font_size = 22
+text = "Level: 0"

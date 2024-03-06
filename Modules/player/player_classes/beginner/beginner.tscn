@@ -371,4 +371,6 @@ shape = SubResource("CircleShape2D_agx64")
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
 
+[editable path="GUIController/MenuController"]
+[editable path="GUIController/MenuController/EXPMenuController"]
 [editable path="hurt_box"]

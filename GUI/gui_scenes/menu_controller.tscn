@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cddvb13bc0kkc"]
+[gd_scene load_steps=9 format=3 uid="uid://cddvb13bc0kkc"]
 
 [ext_resource type="Script" path="res://GUI/gui_scripts/menu_controller.gd" id="1_yy1gf"]
 [ext_resource type="PackedScene" uid="uid://sdjvoiduh272" path="res://GUI/gui_scenes/pause_menu.tscn" id="2_dryp3"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://GUI/gui_scripts/InventoryController.gd" id="5_447rh"]
 [ext_resource type="PackedScene" uid="uid://v5eo0t4cxb17" path="res://Modules/inventory_module/inventory_scenes/inventory.tscn" id="5_m55y8"]
 [ext_resource type="PackedScene" uid="uid://pkdkrqjyh2j6" path="res://Modules/inventory_module/inventory_scenes/inventory_slot.tscn" id="7_iltmn"]
+[ext_resource type="PackedScene" uid="uid://cad6d681d0wbi" path="res://GUI/gui_scenes/exp_menu_controller.tscn" id="8_aub1e"]
 
 [node name="MenuController" type="CanvasLayer"]
 process_mode = 3
@@ -58,3 +59,7 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
+
+[node name="EXPMenuController" parent="." instance=ExtResource("8_aub1e")]
+
+[editable path="EXPMenuController"]

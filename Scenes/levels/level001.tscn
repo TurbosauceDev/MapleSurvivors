@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://chis53glky6tl"]
+[gd_scene load_steps=8 format=3 uid="uid://chis53glky6tl"]
 
 [ext_resource type="AudioStream" uid="uid://dynj0qfk05v3v" path="res://Assets/audio/music/GoofySynthLoop - v2.wav" id="1_d7rka"]
 [ext_resource type="TileSet" uid="uid://b12bmvfkdc1nx" path="res://Assets/visuals/tiles/dungeon.tres" id="2_mu6th"]
@@ -6,14 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://17b2f352krkj" path="res://Scenes/entities/mobs/slime/slime_green.tscn" id="4_72d4b"]
 [ext_resource type="PackedScene" uid="uid://d11sa7ghu6xg4" path="res://Scenes/utility/mob_spawner.tscn" id="4_ehhgx"]
 [ext_resource type="Script" path="res://Data/scripts/spawn_info.gd" id="6_dx1it"]
-[ext_resource type="PackedScene" uid="uid://0ccf6qfstmom" path="res://Scenes/utility/meso_bag.tscn" id="7_oo6cb"]
 
 [sub_resource type="Resource" id="Resource_4bxrx"]
 script = ExtResource("6_dx1it")
 time_start = 0
 time_end = 999
 enemy = ExtResource("4_72d4b")
-enemy_num = 2
+enemy_num = 10
 enemy_spawn_delay = 1
 spawn_delay_counter = 0
 
@@ -39,30 +38,4 @@ position = Vector2(1003, 576)
 position = Vector2(1005, 554)
 spawns = Array[ExtResource("6_dx1it")]([SubResource("Resource_4bxrx")])
 
-[node name="MesoBag" parent="." instance=ExtResource("7_oo6cb")]
-position = Vector2(1309, 883)
-meso = 1000
-
-[node name="MesoBag6" parent="." instance=ExtResource("7_oo6cb")]
-position = Vector2(1232, 883)
-meso = 25
-
-[node name="MesoBag2" parent="." instance=ExtResource("7_oo6cb")]
-position = Vector2(1404, 884)
-meso = 499
-
-[node name="MesoBag3" parent="." instance=ExtResource("7_oo6cb")]
-position = Vector2(1520, 802)
-meso = 499
-
-[node name="MesoBag4" parent="." instance=ExtResource("7_oo6cb")]
-position = Vector2(1521, 722)
-meso = 100
-
-[node name="MesoBag7" parent="." instance=ExtResource("7_oo6cb")]
-position = Vector2(1523, 660)
-meso = 25
-
-[node name="MesoBag5" parent="." instance=ExtResource("7_oo6cb")]
-position = Vector2(1513, 884)
-meso = 1000
+[node name="loot" type="Node2D" parent="." groups=["loot"]]

@@ -26,6 +26,7 @@ buses/default_bus_layout="res://GUI/gui_assets/AudioBus_Layout.tres"
 [autoload]
 
 SaveSettings="*res://GUI/gui_scripts/save_settings.gd"
+Globals="*res://globals.gd"
 
 [display]
 
@@ -52,6 +53,7 @@ folder_colors={
 "res://Data/savedata/": "yellow",
 "res://Data/scripts/": "yellow",
 "res://GUI/": "gray",
+"res://GUI/bars/": "green",
 "res://GUI/gui_assets/": "green",
 "res://GUI/gui_scenes/": "green",
 "res://GUI/gui_scripts/": "green",

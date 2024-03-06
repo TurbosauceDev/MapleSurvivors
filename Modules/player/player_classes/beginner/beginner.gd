@@ -4,6 +4,11 @@ extends CharacterBody2D
 ##On Ready Variables
 @onready var sprite = $player_sprite
 @onready var player_anim = $PlayerAnim
+#@onready var xp_bar = %xp_bar
+#@onready var level_label = %level_label
+@onready var xp_bar = $GUIController/MenuController/EXPMenuController/xp_container/xp_bar
+@onready var level_label = $GUIController/MenuController/EXPMenuController/xp_container/xp_bar/level_label
+
 
 ##Exported Variables
 @export_category("Base Stats")
@@ -19,6 +24,11 @@ extends CharacterBody2D
 @export_category("Current Stats")
 @export var current_hp : int 
 @export var current_mp : int 
+
+@export_category(" - XP - ")
+@export var xp = 0
+@export var xp_level = 1
+@export var collected_xp = 0
 #endregion
 
 #region --- Attacks ---
@@ -44,6 +54,7 @@ func _ready():
 	attack()
 	current_hp = base_hp
 	current_mp = base_mp
+	set_xp_bar(xp, calculate_xp_cap())
 	#print("HP: ", playerStats[0], " , ", "MP: ", playerStats[1])
 #endregion
 
@@ -94,6 +105,7 @@ func _on_hurt_box_hurt(damage, _angle, _knockback_amount):
 	#print(current_hp)
 #endregion
 
+#region --- Magic Bolt ---
 func _on_magic_bolt_timer_timeout():
 	MagicBolt_ammo += MagicBolt_base_ammo
 	MagicBolt_attacktimer.start()
@@ -111,7 +123,9 @@ func _on_magic_bolt_attack_timer_timeout():
 			MagicBolt_attacktimer.start()
 		else:
 			MagicBolt_attacktimer.stop()
+#endregion
 
+#region --- Enemy Targeting ---
 func get_random_target():
 	if enemy_close.size() > 0:
 		return enemy_close.pick_random().global_position
@@ -127,12 +141,49 @@ func _on_enemy_detection_body_exited(body):
 	if enemy_close.has(body):
 		enemy_close.erase(body)
 		#print("Slime Slimed!")
+#endregion
 
-func _on_grab_area_area_entered(area):
+#region --- Looting ---
+func _on_grab_area_area_entered(area): #grab loot
 	if area.is_in_group("loot"):
 		area.target = self
 
-func _on_collect_area_area_entered(area):
+func _on_collect_area_area_entered(area): #collect loot
 	if area.is_in_group("loot"):
 		var meso_amount = area.collect()
+		calculate_xp(meso_amount)
+#endregion
+
+#region --- XP ---
+func calculate_xp(meso_amount):
+	var xp_required = calculate_xp_cap()
+	collected_xp += meso_amount
+	if xp + collected_xp >= xp_required: ##Level Up
+		collected_xp -= xp_required - xp
+		xp_level += 1
+		print("Level:", xp_level)
+		level_label.text = str("Level: ", xp_level )
+		xp = 0
+		xp_required = calculate_xp_cap()
+		calculate_xp(0)
+	else:
+		xp += collected_xp
+		collected_xp = 0
+	
+	set_xp_bar(xp, xp_required)
+
+func calculate_xp_cap():
+	var xp_cap = xp_level
+	if xp_level < 20:
+		xp_cap = xp_level * 5
+	elif xp_level < 40:
+		xp_cap + 95 * (xp_level -19) * 8
+	else:
+		xp_cap = 255 + (xp_level - 39) * 12
 		
+	return xp_cap
+
+func set_xp_bar(set_value = 1, set_max_value = 100):
+	xp_bar.value = set_value
+	xp_bar.max_value = set_max_value
+#endregion
