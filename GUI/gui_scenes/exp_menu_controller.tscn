@@ -1,14 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cad6d681d0wbi"]
+[gd_scene load_steps=12 format=3 uid="uid://cad6d681d0wbi"]
 
 [ext_resource type="Texture2D" uid="uid://dlhutgjdehxmg" path="res://GUI/bars/bar_XP_2.png" id="1_6pt4x"]
 [ext_resource type="Texture2D" uid="uid://cpw2ehucsio7h" path="res://GUI/bars/bar_blank.png" id="1_o6orf"]
 [ext_resource type="Theme" uid="uid://dygx7jsqh014s" path="res://GUI/gui_assets/TestTheme.tres" id="3_g2r5o"]
 [ext_resource type="Texture2D" uid="uid://cp32n0iyyh6vd" path="res://GUI/bars/bar_2XP_1.png" id="3_tbowj"]
+[ext_resource type="Texture2D" uid="uid://bask7y26oalxv" path="res://GUI/bars/bar_HP_blank.png" id="5_6gw2j"]
+[ext_resource type="Texture2D" uid="uid://c1u7hyeprr48s" path="res://GUI/bars/bar_HP_2.png" id="6_dt8pr"]
+[ext_resource type="Texture2D" uid="uid://cg8c2jw4bhab7" path="res://GUI/bars/bar_HP_1.png" id="7_2ptsi"]
+[ext_resource type="Texture2D" uid="uid://chwg47od04rfg" path="res://GUI/bars/bar_MP_2.png" id="8_88shr"]
+[ext_resource type="Texture2D" uid="uid://c2hgyw8vjox0f" path="res://GUI/bars/bar_MP_1.png" id="9_ynv3o"]
+[ext_resource type="AudioStream" uid="uid://oix4e188r8wh" path="res://Assets/audio/sfx/HornStabSound.wav" id="10_edew0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qgsuo"]
 
 [node name="EXPMenuController" type="CanvasLayer"]
 offset = Vector2(32, 32)
-scale = Vector2(2, 2)
-transform = Transform2D(2, 0, 0, 2, 32, 32)
+transform = Transform2D(1, 0, 0, 1, 32, 32)
 
 [node name="xp_container" type="Control" parent="."]
 layout_mode = 3
@@ -37,4 +44,118 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_constants/shadow_outline_size = 4
 theme_override_font_sizes/font_size = 22
-text = "Level: 0"
+text = "Level : 0"
+
+[node name="mp_container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 566.0
+offset_right = 40.0
+offset_bottom = 606.0
+
+[node name="mp_bar" type="TextureProgressBar" parent="mp_container"]
+layout_mode = 0
+offset_right = 119.0
+offset_bottom = 42.0
+value = 72.0
+texture_under = ExtResource("5_6gw2j")
+texture_over = ExtResource("8_88shr")
+texture_progress = ExtResource("9_ynv3o")
+
+[node name="mp_label" type="Label" parent="mp_container/mp_bar"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 16.0
+offset_right = 75.0
+offset_bottom = 44.0
+theme = ExtResource("3_g2r5o")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/font_size = 22
+text = "MP : 0"
+
+[node name="hp_container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 617.5
+offset_right = 40.0
+offset_bottom = 657.5
+
+[node name="hp_bar" type="TextureProgressBar" parent="hp_container"]
+layout_mode = 0
+offset_right = 119.0
+offset_bottom = 42.0
+value = 72.0
+texture_under = ExtResource("5_6gw2j")
+texture_over = ExtResource("6_dt8pr")
+texture_progress = ExtResource("7_2ptsi")
+
+[node name="hp_label" type="Label" parent="hp_container/hp_bar"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 16.0
+offset_right = 75.0
+offset_bottom = 44.0
+theme = ExtResource("3_g2r5o")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/font_size = 22
+text = "HP : 0"
+
+[node name="level_up_container" type="Control" parent="."]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+
+[node name="level_up" type="Panel" parent="level_up_container"]
+custom_minimum_size = Vector2(128, 192)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -211.0
+offset_top = 65.0
+offset_right = -101.0
+offset_bottom = 217.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+theme = ExtResource("3_g2r5o")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qgsuo")
+
+[node name="level_up_label" type="Label" parent="level_up_container/level_up"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.5
+offset_right = 30.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+text = "Level Up!"
+
+[node name="upgrade_options" type="VBoxContainer" parent="level_up_container/level_up"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -59.0
+offset_top = 32.0
+offset_right = 69.0
+offset_bottom = 96.0
+grow_horizontal = 2
+
+[node name="level_up_fx" type="AudioStreamPlayer" parent="level_up_container/level_up"]
+stream = ExtResource("10_edew0")

@@ -285,6 +285,7 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_7r6he")
 MagicBolt_ammo = 0
+MagicBolt_base_ammo = 1
 MagicBolt_attack_speed = 1.0
 
 [node name="GUIController" type="Control" parent="."]
@@ -372,5 +373,6 @@ shape = SubResource("CircleShape2D_agx64")
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
 
 [editable path="GUIController/MenuController"]
+[editable path="GUIController/MenuController/PauseMenu"]
 [editable path="GUIController/MenuController/EXPMenuController"]
 [editable path="hurt_box"]

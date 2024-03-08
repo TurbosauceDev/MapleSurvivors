@@ -18,10 +18,35 @@ func _ready():
 	match level:
 		1:
 			hp = 1
-			speed = 300
+			speed = 100
+			damage = 5
+			knockback_amount = 25
+			aoe_size = 1 * (1 + player.aoe)
+		2:
+			hp = 2
+			speed = 200
 			damage = 10
+			knockback_amount = 50
+			aoe_size = 1 
+		3:
+			hp = 2
+			speed = 300
+			damage = 15
 			knockback_amount = 100
 			aoe_size = 1 
+		4:
+			hp = 2
+			speed = 300
+			damage = 20
+			knockback_amount = 100
+			aoe_size = 1 
+		5:
+			hp = 4
+			speed = 500
+			damage = 25
+			knockback_amount = 100
+			aoe_size = 1 
+			
 
 func _physics_process(delta):
 	position += angle * speed * delta

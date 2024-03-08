@@ -27,13 +27,14 @@ buses/default_bus_layout="res://GUI/gui_assets/AudioBus_Layout.tres"
 
 SaveSettings="*res://GUI/gui_scripts/save_settings.gd"
 Globals="*res://globals.gd"
+UpgradeDb="*res://GUI/gui_scenes/upgrade_db.tscn"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/extend_to_title=true
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://GUI/gui_assets/maplehand.png"
 
 [file_customization]
@@ -48,6 +49,8 @@ folder_colors={
 "res://Assets/visuals/icons/": "pink",
 "res://Assets/visuals/sprites/": "pink",
 "res://Assets/visuals/tiles/": "pink",
+"res://Assets/visuals/upgrades/": "pink",
+"res://Assets/visuals/weapons/": "pink",
 "res://Data/": "gray",
 "res://Data/resources/": "yellow",
 "res://Data/savedata/": "yellow",

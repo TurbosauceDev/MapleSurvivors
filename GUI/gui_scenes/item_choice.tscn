@@ -1,0 +1,119 @@
+[gd_scene load_steps=12 format=3 uid="uid://dxdv1mhqaqk05"]
+
+[ext_resource type="Theme" uid="uid://dygx7jsqh014s" path="res://GUI/gui_assets/TestTheme.tres" id="1_hwmfv"]
+[ext_resource type="Script" path="res://GUI/gui_scenes/item_choice.gd" id="1_qxerk"]
+[ext_resource type="Texture2D" uid="uid://cxvd771th81mq" path="res://GUI/gui_assets/blank_box_theme.tres" id="2_w4tyh"]
+[ext_resource type="Texture2D" uid="uid://dtqxgtm7ocafd" path="res://Assets/visuals/atlas/itematlas_001.png" id="3_5m3du"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yrxeu"]
+texture = ExtResource("2_w4tyh")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hyjuu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s11ho"]
+bg_color = Color(0.733333, 0.8, 0.866667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1svd"]
+bg_color = Color(0.533333, 0.666667, 0.8, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_dpw61"]
+content_margin_left = 4.0
+content_margin_top = 16.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+color = Color(0.533333, 0.666667, 0.8, 1)
+grow_begin = -4.0
+grow_end = -34.0
+thickness = 2
+vertical = true
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vo4k0"]
+texture = ExtResource("2_w4tyh")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlt5u"]
+resource_local_to_scene = true
+atlas = ExtResource("3_5m3du")
+region = Rect2(680, 320, 40, 40)
+
+[node name="item_choice_container" type="PanelContainer"]
+custom_minimum_size = Vector2(128, 64)
+anchors_preset = -1
+anchor_right = 0.00625
+anchor_bottom = 0.0138889
+offset_right = 120.0
+offset_bottom = 54.0
+theme = ExtResource("1_hwmfv")
+theme_override_styles/panel = SubResource("StyleBoxTexture_yrxeu")
+script = ExtResource("1_qxerk")
+metadata/_edit_use_anchors_ = true
+
+[node name="item_button" type="Button" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hyjuu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s11ho")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_j1svd")
+theme_override_styles/focus = SubResource("StyleBoxLine_dpw61")
+
+[node name="item_btn_panel" type="Panel" parent="item_button"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 19.0
+offset_bottom = 19.0
+scale = Vector2(1.25, 1.25)
+theme_override_styles/panel = SubResource("StyleBoxTexture_vo4k0")
+
+[node name="item_btn_texture" type="TextureRect" parent="item_button/item_btn_panel"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = SubResource("AtlasTexture_rlt5u")
+expand_mode = 1
+
+[node name="name_label" type="Label" parent="item_button"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = -2.0
+offset_right = 122.0
+offset_bottom = 14.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 12
+text = "Green Slime Candy"
+
+[node name="desc_label" type="Label" parent="item_button"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 16.0
+offset_right = 121.0
+offset_bottom = 57.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 7
+text = "Delicious slime candy that reminds you of childhood.  Lemon-lime flavor!"
+autowrap_mode = 3
+
+[node name="level_label" type="Label" parent="item_button"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 24.0
+offset_right = 23.0
+offset_bottom = 34.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 8
+text = "Lv: 69"
+
+[connection signal="pressed" from="item_button" to="." method="_on_item_button_pressed"]
